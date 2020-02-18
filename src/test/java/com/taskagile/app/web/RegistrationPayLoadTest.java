@@ -1,6 +1,6 @@
 package com.taskagile.app.web;
 
-import com.taskagile.app.domain.RegistrationPayload;
+import com.taskagile.app.web.payload.RegistrationPayload;
 import org.junit.Before;
 import org.junit.Test;
 

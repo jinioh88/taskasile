@@ -1,12 +1,13 @@
 package com.taskagile.app.controller;
 
-import com.taskagile.app.domain.RegistrationPayload;
+import com.taskagile.app.domain.exception.EmailAddressExistsException;
+import com.taskagile.app.domain.exception.UsernameExistsException;
+import com.taskagile.app.domain.application.UserService;
+import com.taskagile.app.web.payload.RegistrationPayload;
 import com.taskagile.app.utils.JsonUtils;
-import net.minidev.json.JSONUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
@@ -38,7 +39,7 @@ public class RegistrationApiControllerTest {
     RegistrationPayload payload = new RegistrationPayload();
     payload.setUserName("exist");
     payload.setEmailAddress("jinioh88@gmail.com");
-    payload.setPassword("1111");
+    payload.setPassword("111111");
 
     doThrow(UsernameExistsException.class).when(serviceMock).register(payload.toCommand());
 
@@ -73,8 +74,7 @@ public class RegistrationApiControllerTest {
     payload.setEmailAddress("sunny@taskagile.com");
     payload.setPassword("MyPassword!");
 
-    doNothing().when(serviceMock)
-      .register(payload.toCommand());
+    doNothing().when(serviceMock).register(payload.toCommand());
 
     mvc.perform(
       post("/api/registrations")

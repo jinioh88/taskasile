@@ -1,6 +1,6 @@
-package com.taskagile.app.domain;
+package com.taskagile.app.web.payload;
 
-import lombok.Builder;
+import com.taskagile.app.domain.command.RegistrationCommand;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -8,6 +8,7 @@ import lombok.Setter;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 
 @Getter
 @Setter
@@ -26,4 +27,7 @@ public class RegistrationPayload {
   @NotNull
   private String password;
 
+  public RegistrationCommand toCommand() {
+    return new RegistrationCommand(this.userName, this.emailAddress, this.password);
+  }
 }
