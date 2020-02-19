@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class RegistrationManagement {
   private final UserRepository repository;
-  private PasswordEncryptor passwordEncryptor;
+  private final PasswordEncryptor passwordEncryptor;
 
   public User register(String userName, String emailAddress, String password) throws RegistrationException {
     User existingUser = repository.findByUsername(userName);

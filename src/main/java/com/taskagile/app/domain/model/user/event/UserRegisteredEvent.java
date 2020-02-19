@@ -3,13 +3,13 @@ package com.taskagile.app.domain.model.user.event;
 import com.taskagile.app.domain.common.event.DomainEvent;
 import com.taskagile.app.domain.model.user.User;
 import lombok.EqualsAndHashCode;
-import lombok.Setter;
+import lombok.Getter;
 import lombok.ToString;
 import org.springframework.util.Assert;
 
-@Setter
+@Getter
 @ToString
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = false)
 public class UserRegisteredEvent extends DomainEvent {
   private static final long serialVersionUID = 2580061707540917880L;
 
