@@ -1,6 +1,7 @@
 package com.taskagile.app.domain.model.user;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
@@ -10,6 +11,7 @@ import java.util.Date;
 @Data
 @Entity
 @Table(name = "user")
+@EqualsAndHashCode
 public class User {
   private static final long serialVersionUID = -538781580460070724L;
 
